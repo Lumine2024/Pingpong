@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Pingpong Game</title>
+	<style>
+		:root {
+			--bg: #f3f7fb;
+			--panel: #ffffff;
+			--stroke: #1f2937;
+			--rect-a: #3b82f6;
+			--rect-b: #ef4444;
+			--ball: #f59e0b;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			background: radial-gradient(circle at 20% 20%, #ffffff 0%, var(--bg) 70%);
+			font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		.stage {
+			width: min(90vw, 900px);
+			border: 2px solid var(--stroke);
+			border-radius: 12px;
+			background: var(--panel);
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+		}
+
+		.game-shell {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 14px;
+		}
+
+		.game-title {
+			margin: 0;
+			color: var(--stroke);
+			font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+			letter-spacing: 0.04em;
+		}
+
+		.game-result {
+			min-height: 1.5em;
+			margin: 0;
+			font-size: clamp(1rem, 2vw, 1.2rem);
+			font-weight: 600;
+			color: var(--stroke);
+		}
+
+		.restart-btn {
+			padding: 10px 18px;
+			border: 2px solid var(--stroke);
+			border-radius: 8px;
+			background: var(--panel);
+			color: var(--stroke);
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		.restart-btn:hover {
+			background: #e5ecf4;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="game-shell">
+		<h1 class="game-title">Pingpong Game</h1>
+		<svg id="stage" class="stage" viewBox="0 0 900 500" aria-label="pingpong-shapes">
+			<rect id="rect1" x="100" y="100" width="40" height="150" fill="var(--rect-a)" />
+			<rect id="rect2" x="760" y="100" width="40" height="150" fill="var(--rect-b)" />
+			<circle id="ball" cx="450" cy="250" r="25" fill="var(--ball)" />
+		</svg>
+		<p id="game-result" class="game-result" aria-live="polite"></p>
+		<button id="restart-button" class="restart-btn" type="button">开始游戏</button>
+	</div>
+
+	<script src="dist/app.js"></script>
+</body>
+
+</html>

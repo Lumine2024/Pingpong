@@ -1,0 +1,16 @@
+{
+    "name": "pingpong",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "tsc && node bundle.mjs",
+        "bundle": "node bundle.mjs",
+        "watch": "tsc -w",
+        "serve": "node server.mjs"
+    },
+    "devDependencies": {
+        "esbuild": "^0.25.10",
+        "typescript": "^5.9.0"
+    }
+}

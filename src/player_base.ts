@@ -7,14 +7,14 @@ export abstract class PlayerBase {
         this.name = name;
     }
     setVelocity(velocity: Vector) {
-        if(this.name == "rect1") {
+        if(this.name === "rect1") {
             sceneController.setRect1Velocity(velocity);
         } else {
             sceneController.setRect2Velocity(velocity);
         }
     }
     getPosition(): Vector {
-        if(this.name == "rect1") {
+        if(this.name === "rect1") {
             return sceneController.getRect1Position();
         } else {
             return sceneController.getRect2Position();

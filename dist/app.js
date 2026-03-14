@@ -209,7 +209,13 @@
       };
     }
     static clampRectPosition(position) {
-      return _SceneController.clampPosition(position, 0, CONFIG.STAGE_HEIGHT - CONFIG.RECT_HEIGHT, 0, CONFIG.STAGE_WIDTH - CONFIG.RECT_WIDTH);
+      return _SceneController.clampPosition(
+        position,
+        0,
+        CONFIG.STAGE_HEIGHT - CONFIG.RECT_HEIGHT,
+        0,
+        CONFIG.STAGE_WIDTH - CONFIG.RECT_WIDTH
+      );
     }
     static isBallCollidingRect(ballPosition, rectPosition) {
       const closestPoint = _SceneController.clampPosition(
@@ -226,10 +232,10 @@
       const reflectedRelativeVelocityX = -relativeVelocity.x;
       const newWorldVelocityX = reflectedRelativeVelocityX + rectVelocity.x;
       const directedVelocityX = hitRect === "rect1" ? Math.abs(newWorldVelocityX) : -Math.abs(newWorldVelocityX);
-      this.ballVelocity = {
+      this.ballVelocity = scale({
         x: directedVelocityX,
         y: relativeVelocity.y + rectVelocity.y
-      };
+      }, CONFIG.BALL_VELOCITY);
     }
     gameLoop() {
       const rect1Position = this.getRect1Position();
@@ -278,7 +284,6 @@
         this.applyRectCollision(this.getRect2Velocity(), "rect2");
         controller.setBallPosition(rect2CurrentPosition.x - CONFIG.BALL_RADIUS, nextBallPosition.y);
       }
-      this.ballVelocity = scale(this.ballVelocity, CONFIG.BALL_VELOCITY);
       return 0;
     }
   };
@@ -290,14 +295,14 @@
       this.name = name;
     }
     setVelocity(velocity) {
-      if (this.name == "rect1") {
+      if (this.name === "rect1") {
         sceneController.setRect1Velocity(velocity);
       } else {
         sceneController.setRect2Velocity(velocity);
       }
     }
     getPosition() {
-      if (this.name == "rect1") {
+      if (this.name === "rect1") {
         return sceneController.getRect1Position();
       } else {
         return sceneController.getRect2Position();
@@ -402,7 +407,7 @@
       this.setVelocity(vel);
     }
     update() {
-      if (this.getName() == "rect1") {
+      if (this.getName() === "rect1") {
         this.updateWithKeys("KeyW", "KeyS", "KeyA", "KeyD");
       } else {
         this.updateWithKeys("ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight");

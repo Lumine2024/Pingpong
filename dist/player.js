@@ -34,7 +34,7 @@ export class Player extends PlayerBase {
         this.setVelocity(vel);
     }
     update() {
-        if (this.getName() == "rect1") {
+        if (this.getName() === "rect1") {
             this.updateWithKeys("KeyW", "KeyS", "KeyA", "KeyD");
         }
         else {

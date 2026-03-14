@@ -72,10 +72,10 @@ export class SceneController {
         const directedVelocityX = hitRect === "rect1"
             ? Math.abs(newWorldVelocityX)
             : -Math.abs(newWorldVelocityX);
-        this.ballVelocity = {
+        this.ballVelocity = scale({
             x: directedVelocityX,
             y: relativeVelocity.y + rectVelocity.y
-        };
+        }, CONFIG.BALL_VELOCITY);
     }
     gameLoop() {
         // update positions
@@ -116,7 +116,6 @@ export class SceneController {
             this.applyRectCollision(this.getRect2Velocity(), "rect2");
             controller.setBallPosition(rect2CurrentPosition.x - CONFIG.BALL_RADIUS, nextBallPosition.y);
         }
-        this.ballVelocity = scale(this.ballVelocity, CONFIG.BALL_VELOCITY);
         return 0;
     }
 }

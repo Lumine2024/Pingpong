@@ -4,7 +4,7 @@ export class PlayerBase {
         this.name = name;
     }
     setVelocity(velocity) {
-        if (this.name == "rect1") {
+        if (this.name === "rect1") {
             sceneController.setRect1Velocity(velocity);
         }
         else {
@@ -12,7 +12,7 @@ export class PlayerBase {
         }
     }
     getPosition() {
-        if (this.name == "rect1") {
+        if (this.name === "rect1") {
             return sceneController.getRect1Position();
         }
         else {

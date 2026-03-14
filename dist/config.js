@@ -1,0 +1,9 @@
+export const CONFIG = Object.freeze({
+    STAGE_WIDTH: 900,
+    STAGE_HEIGHT: 500,
+    RECT_WIDTH: 40,
+    RECT_HEIGHT: 150,
+    BALL_RADIUS: 25,
+    BALL_VELOCITY: 3,
+    MAX_RECT_VELOCITY: 1.5
+});
